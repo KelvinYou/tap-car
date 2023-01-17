@@ -118,7 +118,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         // navigate to the home screen
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
-                builder: (context) => const NavBarScreen()
+                builder: (context) => const NavBarScreen(selectedIndex: 0,)
             ),
                 (route) => false);
       } else {
