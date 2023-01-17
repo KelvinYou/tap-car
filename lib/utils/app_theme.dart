@@ -36,10 +36,10 @@ class AppTheme {
     visualDensity: VisualDensity.adaptivePlatformDensity,
     primarySwatch: Colors.blue,
     fontFamily: 'Schyler',
-    accentColor: primary,
+    accentColor: Color(0xFFFEBE3F),
     colorScheme: const ColorScheme(
       brightness: Brightness.light,
-      primary: primary,
+      primary: Color(0xFFFEBE3F),
       onPrimary: Colors.black,
       primaryContainer: backgroundLightGrey,
       onPrimaryContainer: Colors.black,
