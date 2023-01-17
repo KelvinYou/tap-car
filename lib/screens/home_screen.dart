@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'package:tap_car/utils/app_theme.dart';
 import 'package:tap_car/widgets/loading_indicator.dart';
+import 'package:tap_car/widgets/primary_app_bar.dart';
 // import 'package:tap_car/widget/app_bar/secondary_app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,9 +20,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return isLoading
         ? const LoadingIndicator() : Scaffold(
-      // appBar: SecondaryAppBar(
-      //     title: "Coming Soon"
-      // ),
+      appBar: PrimaryAppBar(
+          title: "TapCar"
+      ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
