@@ -43,15 +43,16 @@ class AuthMethods {
           username: username,
           phoneNumber: "",
           email: email,
-          photoUrl: "https://firebasestorage.googleapis.com/v0/b/fyp-travel-guide-6b527.appspot.com/o/default-avatar.jpg?alt=media",
+          // photoUrl: "https://firebasestorage.googleapis.com/v0/b/fyp-travel-guide-6b527.appspot.com/o/default-avatar.jpg?alt=media",
+          photoUrl: "",
         );
 
         // // adding user in our database
         await _firestore
-            .collection("tourGuides")
+            .collection("users")
             .doc(cred.user!.uid)
             .set(_user.toJson());
-
+        res = "success";
       } else {
         res = "Please enter all the fields";
       }

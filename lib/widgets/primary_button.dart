@@ -22,15 +22,15 @@ class PrimaryButton extends StatelessWidget {
       child: Ink(
         width: double.infinity,
         decoration: BoxDecoration(
-            color: inverseColor ? Theme.of(context).colorScheme.background
-                : Theme.of(context).colorScheme.primary,
-            borderRadius: BorderRadius.circular(5.0),
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(15.0),
             border: Border.all(
-              color: Theme.of(context).colorScheme.primary,
+              color: Colors.black,
               width: 2.0,
             )
         ),
         child: Container(
+          height: 50,
           margin: const EdgeInsets.symmetric(horizontal: 25.0),
           constraints: const BoxConstraints(
               maxWidth: 200.0,

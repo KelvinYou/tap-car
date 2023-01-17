@@ -5,14 +5,14 @@ import 'package:tap_car/utils/app_theme.dart';
 import 'package:tap_car/widgets/loading_indicator.dart';
 // import 'package:tap_car/widget/app_bar/secondary_app_bar.dart';
 
-class NavBarScreen extends StatefulWidget {
-  const NavBarScreen({super.key});
+class CarsScreen extends StatefulWidget {
+  const CarsScreen({super.key});
 
   @override
-  State<NavBarScreen> createState() => _NavBarScreenState();
+  State<CarsScreen> createState() => _CarsScreenState();
 }
 
-class _NavBarScreenState extends State<NavBarScreen> {
+class _CarsScreenState extends State<CarsScreen> {
   bool isLoading = false;
 
   @override
@@ -32,7 +32,7 @@ class _NavBarScreenState extends State<NavBarScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Nav Bar"),
+              Text("Car list"),
             ],
           ),
         ),

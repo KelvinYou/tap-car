@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:tap_car/utils/app_theme.dart';
+import 'package:tap_car/widgets/loading_indicator.dart';
 // import 'package:tap_car/widget/app_bar/secondary_app_bar.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,9 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? const Center(
-      child: CircularProgressIndicator(),
-    ) : Scaffold(
+        ? const LoadingIndicator() : Scaffold(
       // appBar: SecondaryAppBar(
       //     title: "Coming Soon"
       // ),

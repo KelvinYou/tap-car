@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:tap_car/screens/register_screen.dart';
 
 import 'package:tap_car/utils/app_theme.dart';
+import 'package:tap_car/widgets/loading_indicator.dart';
 import 'package:tap_car/widgets/primary_app_bar.dart';
 import 'package:tap_car/widgets/primary_button.dart';
 import 'package:tap_car/widgets/text_field_input.dart';
@@ -32,9 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? const Center(
-      child: CircularProgressIndicator(),
-    ) : Scaffold(
+        ? const LoadingIndicator() : Scaffold(
       appBar: PrimaryAppBar(
           title: ""
       ),
@@ -87,6 +86,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: submitLogin,
                   childText: "Login",
                 ),
+
+                const SizedBox(height: 20,),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
