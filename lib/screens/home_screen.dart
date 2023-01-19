@@ -16,6 +16,26 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = false;
 
+  Widget titleText(String content) {
+    return Text(
+      content,
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 20,
+      ),
+    );
+  }
+
+  Widget subtitleText(String content) {
+    return Text(
+      content,
+      style: TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 16,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return isLoading
@@ -29,12 +49,34 @@ class _HomeScreenState extends State<HomeScreen> {
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.background,
         ),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Home"),
-            ],
+        child: Container(
+          padding: EdgeInsets.only(left: 20),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 20,),
+
+                titleText("Choose your car"),
+
+                const SizedBox(height: 10,),
+
+                subtitleText("Car brand"),
+
+                const SizedBox(height: 10,),
+
+
+
+                const SizedBox(height: 10,),
+
+                subtitleText("Most rented"),
+
+                const SizedBox(height: 10,),
+
+
+              ],
+            ),
           ),
         ),
       ),

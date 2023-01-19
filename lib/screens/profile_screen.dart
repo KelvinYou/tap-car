@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tap_car/screens/login_screen.dart';
 import 'package:tap_car/screens/change_profile_screen.dart';
+import 'package:tap_car/screens/tnc_screen.dart';
 import 'package:tap_car/services/auth_methods.dart';
 
 import 'package:tap_car/utils/app_theme.dart';
@@ -59,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       isLoading = false;
     });
-    print(userData);
+    // print(userData);
   }
 
   Widget selectionView(IconData icon, String title, Color color) {
@@ -147,11 +148,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         backgroundColor: Colors.grey,
                       ),
                     ),
-                    Text(userData["username"]),
+                    const SizedBox(height: 10,),
+                    Text(
+                      userData["username"],
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                    const SizedBox(height: 30,),
                   ],
                 ),
               ),
 
+              GestureDetector(
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                    const TncScreen(),
+                  ),
+                ),
+                child: selectionView(Icons.policy_outlined, "Terms & Conditions", Theme.of(context).colorScheme.onPrimary),
+              ),
 
               GestureDetector(
                 onTap: () async {
