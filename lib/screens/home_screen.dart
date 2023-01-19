@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:tap_car/utils/app_theme.dart';
 import 'package:tap_car/widgets/loading_indicator.dart';
 import 'package:tap_car/widgets/primary_app_bar.dart';
-// import 'package:tap_car/widget/app_bar/secondary_app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -36,6 +38,14 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  List<String> documents = [ "he", "ha" ];
+
+  List<String> carBrands = [
+    "assets/honda-logo.png",
+    "assets/perodua-logo.png",
+    "assets/proton-logo.png"
+  ];
+
   @override
   Widget build(BuildContext context) {
     return isLoading
@@ -54,6 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 20,),
@@ -65,16 +76,52 @@ class _HomeScreenState extends State<HomeScreen> {
                 subtitleText("Car brand"),
 
                 const SizedBox(height: 10,),
-
-
-
+                SizedBox(
+                  height: 100,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: carBrands.length,
+                    itemBuilder: (BuildContext context, int index) =>
+                    Padding(
+                      padding: EdgeInsets.only(right: 25),
+                      child: Container(
+                        width: 100,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFF1F8FF),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Image(
+                          width: 50,
+                          height: 50,
+                          image: AssetImage(carBrands[index]),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
                 const SizedBox(height: 10,),
 
                 subtitleText("Most rented"),
 
                 const SizedBox(height: 10,),
 
+                SizedBox(
+                  height: 300,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 2,
+                    itemBuilder: (BuildContext context, int index) => Card(
+                      child: Center(
+                        child: Text(documents[index]),
+                      ),
+                    ),
+                  ),
+                ),
 
+                const SizedBox(height: 20,),
               ],
             ),
           ),

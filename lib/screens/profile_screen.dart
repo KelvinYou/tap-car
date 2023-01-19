@@ -60,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       isLoading = false;
     });
-    // print(userData);
+    print(userData);
   }
 
   Widget selectionView(IconData icon, String title, Color color) {
