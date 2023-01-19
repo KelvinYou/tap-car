@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tap_car/screens/add_car_screen.dart';
 
 import 'package:tap_car/utils/app_theme.dart';
 import 'package:tap_car/widgets/loading_indicator.dart';
 import 'package:tap_car/widgets/primary_app_bar.dart';
+import 'package:tap_car/widgets/primary_button.dart';
 // import 'package:tap_car/widget/app_bar/secondary_app_bar.dart';
 
 class UserCarScreen extends StatefulWidget {
@@ -34,6 +36,14 @@ class _UserCarScreenState extends State<UserCarScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Home"),
+              PrimaryButton(
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const AddCarScreen(),
+                    ),
+                  ),
+                  childText: "Add",
+              ),
 
             ],
           ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tap_car/screens/login_screen.dart';
 import 'package:tap_car/screens/change_profile_screen.dart';
+import 'package:tap_car/screens/more_screen.dart';
 import 'package:tap_car/screens/tnc_screen.dart';
 import 'package:tap_car/services/auth_methods.dart';
 
@@ -158,6 +159,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     const SizedBox(height: 30,),
                   ],
                 ),
+              ),
+
+              GestureDetector(
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                    const MoreScreen(),
+                  ),
+                ),
+                child: selectionView(Icons.more_outlined, "More", Theme.of(context).colorScheme.onPrimary),
               ),
 
               GestureDetector(
