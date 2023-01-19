@@ -60,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       isLoading = false;
     });
-    print(userData);
+    // print(userData);
   }
 
   Widget selectionView(IconData icon, String title, Color color) {
@@ -140,7 +140,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       child: userData["photoUrl"] == "" ? CircleAvatar(
                         radius: 44.0,
-                        backgroundImage: AssetImage('assets/logo.png'),
+                        backgroundImage: AssetImage('assets/default-profile-pic.jpeg'),
                         backgroundColor: Colors.grey,
                       ) : CircleAvatar(
                         radius: 44.0,
