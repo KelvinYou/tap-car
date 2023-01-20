@@ -17,7 +17,7 @@ class FireStoreMethods {
 
     try {
       if (image != null) {
-        String photoUrl = await StorageMethods().uploadImageToStorage('CarPic', image, false);
+        String photoUrl = await StorageMethods().uploadImageToStorageList('CarPics', carId, image, false);
         // String photoUrl = await
         Car car = Car(
           carId: carId,

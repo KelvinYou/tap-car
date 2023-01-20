@@ -52,6 +52,7 @@ class Car {
     "pricePerDay": pricePerDay,
     "year": year,
     "brand": brand,
+    "model": model,
     "seat": seat,
     "transmission": transmission,
     "photoUrl": photoUrl,

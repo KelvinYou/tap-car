@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:tap_car/utils/app_theme.dart';
+import 'package:tap_car/widgets/car_card.dart';
 import 'package:tap_car/widgets/loading_indicator.dart';
 import 'package:tap_car/widgets/primary_app_bar.dart';
 
@@ -45,6 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
     "assets/perodua-logo.png",
     "assets/proton-logo.png"
   ];
+
+  List<DocumentSnapshot> carDocuments = [];
+
+
+  CollectionReference carCollection =
+  FirebaseFirestore.instance.collection('cars');
 
   @override
   Widget build(BuildContext context) {
@@ -108,16 +115,39 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 10,),
 
                 SizedBox(
-                  height: 300,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 2,
-                    itemBuilder: (BuildContext context, int index) => Card(
-                      child: Center(
-                        child: Text(documents[index]),
-                      ),
-                    ),
+                  height: 400,
+                  child: StreamBuilder(
+                    stream: carCollection
+                      .orderBy('createdDate', descending: false)
+                      .snapshots(),
+                    builder: (context, streamSnapshot) {
+                      if (streamSnapshot.hasData) {
+                        carDocuments = streamSnapshot.data!.docs;
+                        // carDocuments = documents.where((element) {
+                        //   return element
+                        //       .get('status')
+                        //       .contains(status);
+                        // }).toList();
+
+                        // documents = documents.where((element) {
+                        //   return element
+                        //       .get('tourGuideId')
+                        //       .contains(FirebaseAuth.instance.currentUser!.uid);
+                        // }).toList();
+                      }
+                      return ListView.builder(
+                        itemCount: carDocuments.length,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (ctx, index) =>
+                            Container(
+                              padding: EdgeInsets.only(right: 25),
+                              child: CarCard(
+                                snap: carDocuments[index].data(),
+                              ),
+                            ),
+                      );
+                    },
                   ),
                 ),
 
