@@ -4,13 +4,14 @@ class Car {
   final String carId;
   final String ownerId;
   final String carName;
-  final String pricePerDay;
-  final String year;
+  final double pricePerDay;
+  final int year;
   final String brand;
   final String model;
-  final String seat;
+  final int seat;
   final String transmission;
-  final Map<String, dynamic> photoUrls;
+  final String photoUrl;
+  final DateTime createdDate;
 
   const Car(
     {required this.carId,
@@ -22,7 +23,8 @@ class Car {
       required this.model,
       required this.seat,
       required this.transmission,
-      required this.photoUrls,
+      required this.photoUrl,
+      required this.createdDate,
     });
 
   static Car fromSnap(DocumentSnapshot snap) {
@@ -38,7 +40,8 @@ class Car {
       model: snapshot["model"],
       seat: snapshot["seat"],
       transmission: snapshot["transmission"],
-      photoUrls: snapshot["photoUrls"],
+      photoUrl: snapshot["photoUrl"],
+      createdDate: snapshot["createdDate"],
     );
   }
 
@@ -51,6 +54,7 @@ class Car {
     "brand": brand,
     "seat": seat,
     "transmission": transmission,
-    "photoUrls": photoUrls,
+    "photoUrl": photoUrl,
+    "createdDate": createdDate,
   };
 }

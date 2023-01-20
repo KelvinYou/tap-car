@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tap_car/services/firestore_methods.dart';
 
 import 'package:tap_car/utils/utils.dart';
 import 'package:tap_car/widgets/loading_indicator.dart';
 import 'package:tap_car/widgets/primary_app_bar.dart';
 import 'package:tap_car/widgets/primary_button.dart';
 import 'package:tap_car/widgets/text_field_input.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddCarScreen extends StatefulWidget {
@@ -22,6 +23,20 @@ class _AddCarScreenState extends State<AddCarScreen> {
   Uint8List? image;
 
   final carNameController = TextEditingController();
+  final yearController = TextEditingController();
+  final brandController = TextEditingController();
+  final modelController = TextEditingController();
+  final priceController = TextEditingController();
+  final seatController = TextEditingController();
+  final transmissionController = TextEditingController();
+
+  String carNameErrorMsg = "";
+  String yearErrorMsg = "";
+  String brandErrorMsg = "";
+  String modelErrorMsg = "";
+  String priceErrorMsg = "";
+  String seatErrorMsg = "";
+  String transmissionErrorMsg = "";
 
   selectImage() async {
     Uint8List im = await pickImage(ImageSource.gallery);
@@ -32,7 +47,51 @@ class _AddCarScreenState extends State<AddCarScreen> {
   }
 
   addCarSubmit() async {
+    setState(() {
+      isLoading = true;
+      carNameErrorMsg = "";
+      yearErrorMsg = "";
+      brandErrorMsg = "";
+      modelErrorMsg = "";
+      priceErrorMsg = "";
+      seatErrorMsg = "";
+      transmissionErrorMsg = "";
+    });
 
+    try {
+      String res = await FireStoreMethods().addCar(
+        FirebaseAuth.instance.currentUser!.uid,
+        carNameController.text,
+        double.parse(priceController.text),
+        int.parse(yearController.text),
+        brandController.text,
+        modelController.text,
+        int.parse(seatController.text),
+        image,
+        transmissionController.text,
+      );
+      if (res == "success") {
+        setState(() {
+          isLoading = false;
+        });
+        showSnackBar(
+          context,
+          'Added!',
+        );
+        Navigator.of(context).pop();
+      } else {
+        showSnackBar(context, res);
+      }
+    } catch (err) {
+      showSnackBar(
+        context,
+        err.toString(),
+      );
+    }
+
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -63,37 +122,37 @@ class _AddCarScreenState extends State<AddCarScreen> {
                 ),
                 const SizedBox(height: 20,),
                 TextFieldInput(
-                  textEditingController: carNameController,
+                  textEditingController: yearController,
                   hintText: "Year",
                   textInputType: TextInputType.text,
                 ),
                 const SizedBox(height: 20,),
                 TextFieldInput(
-                  textEditingController: carNameController,
+                  textEditingController: brandController,
                   hintText: "Brand",
                   textInputType: TextInputType.text,
                 ),
                 const SizedBox(height: 20,),
                 TextFieldInput(
-                  textEditingController: carNameController,
+                  textEditingController: modelController,
                   hintText: "Model",
                   textInputType: TextInputType.text,
                 ),
                 const SizedBox(height: 20,),
                 TextFieldInput(
-                  textEditingController: carNameController,
+                  textEditingController: priceController,
                   hintText: "Price Per Day (RM)",
                   textInputType: TextInputType.text,
                 ),
                 const SizedBox(height: 20,),
                 TextFieldInput(
-                  textEditingController: carNameController,
+                  textEditingController: seatController,
                   hintText: "No. of Seat",
                   textInputType: TextInputType.text,
                 ),
                 const SizedBox(height: 20,),
                 TextFieldInput(
-                  textEditingController: carNameController,
+                  textEditingController: transmissionController,
                   hintText: "Transmission",
                   textInputType: TextInputType.text,
                 ),

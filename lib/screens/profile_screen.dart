@@ -108,6 +108,51 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
+  Widget titleText(String content) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 20),
+      child: Text(
+        content,
+        style: TextStyle(
+          color: Color(0xFFF2AA4C),
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+        ),
+      ),
+    );
+  }
+
+  Widget subtitleText(String content) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 20),
+      child: Text(
+        content,
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+          fontSize: 15,
+        ),
+      ),
+    );
+  }
+
+  Widget contentText(String content) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 20),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(width: 0.5, color: Colors.black),
+        )
+      ),
+      child: Text(
+        content,
+        style: TextStyle(
+          fontSize: 15,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return isLoading
@@ -124,6 +169,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 // height: 100,
@@ -160,6 +206,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 ),
               ),
+              const SizedBox(height: 20,),
+              titleText("Profile Details"),
+              subtitleText("Date of Birth"),
+              contentText("2 Jan 2000"),
+              const SizedBox(height: 15,),
+              subtitleText("Email"),
+              contentText("kayli@gmail.com"),
+              const SizedBox(height: 15,),
+              subtitleText("Mobile Number"),
+              contentText("2 Jan 2000"),
+              const SizedBox(height: 15,),
+              subtitleText("Address"),
+              contentText("No.1, Jalan Tanjung Rambutan"),
+              const SizedBox(height: 15,),
+              subtitleText("Password"),
+              contentText("******"),
 
               GestureDetector(
                 onTap: () => Navigator.of(context).push(
