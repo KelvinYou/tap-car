@@ -34,10 +34,16 @@ class TextFieldInput extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Container(
-      // padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text(
+            hintText,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
           TextField(
             inputFormatters: textInputFormatter,
             controller: textEditingController,
@@ -46,15 +52,15 @@ class TextFieldInput extends StatelessWidget {
             onChanged: onChanged,
             textInputAction: TextInputAction.done,
             keyboardType: textInputType,
+
             decoration: InputDecoration(
               border: OutlineInputBorder(
-                borderSide: BorderSide(
-                    color: errorMsg == "" ? Theme.of(context).colorScheme.primary
-                        : AppTheme.errorRed,
-                    width: 1.0
-                ),
+                borderRadius: BorderRadius.circular(15.0),
+                borderSide: BorderSide.none,
               ),
-              labelText: hintText,
+              filled: true,
+              fillColor: Color(0xFFD9D9D9),
+              // labelText: hintText,
               prefixIcon: iconData != Icons.import_contacts_sharp ? Align(
                 widthFactor: 1.0,
                 heightFactor: 1.0,
@@ -64,6 +70,32 @@ class TextFieldInput extends StatelessWidget {
             obscureText: isPass,
             enabled: !isReadOnly,
           ),
+          // TextField(
+          //   inputFormatters: textInputFormatter,
+          //   controller: textEditingController,
+          //   maxLines: maxLines,
+          //   maxLength: maxLength,
+          //   onChanged: onChanged,
+          //   textInputAction: TextInputAction.done,
+          //   keyboardType: textInputType,
+          //   decoration: InputDecoration(
+          //     border: OutlineInputBorder(
+          //       borderSide: BorderSide(
+          //           color: errorMsg == "" ? Theme.of(context).colorScheme.primary
+          //               : AppTheme.errorRed,
+          //           width: 1.0
+          //       ),
+          //     ),
+          //     labelText: hintText,
+          //     prefixIcon: iconData != Icons.import_contacts_sharp ? Align(
+          //       widthFactor: 1.0,
+          //       heightFactor: 1.0,
+          //       child: Icon(iconData),
+          //     )  : null,
+          //   ),
+          //   obscureText: isPass,
+          //   enabled: !isReadOnly,
+          // ),
 
           errorMsg == "" ? const SizedBox() : Text(
             errorMsg,

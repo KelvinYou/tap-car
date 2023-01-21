@@ -216,7 +216,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               contentText("kayli@gmail.com"),
               const SizedBox(height: 15,),
               subtitleText("Mobile Number"),
-              contentText("2 Jan 2000"),
+              contentText("+(60) 12-3456 789"),
               const SizedBox(height: 15,),
               subtitleText("Address"),
               contentText("No.1, Jalan Tanjung Rambutan"),
