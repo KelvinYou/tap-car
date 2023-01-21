@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:tap_car/screens/login_screen.dart';
 import 'package:tap_car/screens/change_profile_screen.dart';
 import 'package:tap_car/screens/more_screen.dart';
+import 'package:tap_car/screens/theme_mode_screen.dart';
 import 'package:tap_car/screens/tnc_screen.dart';
 import 'package:tap_car/services/auth_methods.dart';
 
@@ -223,14 +224,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
               subtitleText("Password"),
               contentText("******"),
 
+              const SizedBox(height: 30,),
+
               GestureDetector(
                 onTap: () => Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) =>
-                    const MoreScreen(),
+                    const ThemeModeScreen(),
                   ),
                 ),
-                child: selectionView(Icons.more_outlined, "More", Theme.of(context).colorScheme.onPrimary),
+                child: selectionView(Icons.dark_mode_outlined, "Light / Dark Mode", Theme.of(context).colorScheme.onPrimary),
               ),
 
               GestureDetector(
@@ -241,6 +244,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 child: selectionView(Icons.policy_outlined, "Terms & Conditions", Theme.of(context).colorScheme.onPrimary),
+              ),
+
+              GestureDetector(
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                    const MoreScreen(),
+                  ),
+                ),
+                child: selectionView(Icons.more_outlined, "More", Theme.of(context).colorScheme.onPrimary),
               ),
 
               GestureDetector(
