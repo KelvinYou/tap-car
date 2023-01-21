@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return isLoading
         ? const LoadingIndicator() : Scaffold(
       appBar: PrimaryAppBar(
-          title: "Coming Soon"
+          title: "Forgot Password"
       ),
       body: Container(
         width: double.infinity,

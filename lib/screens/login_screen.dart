@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tap_car/screens/nav_bar_screen.dart';
 import 'package:tap_car/screens/register_screen.dart';
 
 import 'package:tap_car/utils/app_theme.dart';
@@ -8,6 +9,9 @@ import 'package:tap_car/widgets/primary_app_bar.dart';
 import 'package:tap_car/widgets/primary_button.dart';
 import 'package:tap_car/widgets/text_field_input.dart';
 // import 'package:tap_car/widget/app_bar/secondary_app_bar.dart';
+import 'package:tap_car/services/auth_methods.dart';
+import 'package:tap_car/utils/utils.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -27,7 +31,64 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
   void submitLogin() async {
+    setState(() {
+      isLoading = true;
+      emailErrorMsg = "";
+      passwordErrorMsg = "";
+    });
 
+    bool emailFormatCorrected = false;
+    bool passwordFormatCorrected = false;
+
+    if (emailController.text == "") {
+      setState(() {
+        emailErrorMsg = "Please enter your email address.";
+      });
+    } else if (!RegExp(
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(emailController.text)) {
+      setState(() {
+        emailErrorMsg = "Incorrect email format.\nE.g. correct email: name@email.com.";
+      });
+    } else {
+      emailFormatCorrected = true;
+    }
+
+    if (passwordController.text == "") {
+      setState(() {
+        passwordErrorMsg = "Please enter your password.";
+      });
+    } else if (passwordController.text.length < 6) {
+      setState(() {
+        passwordErrorMsg = "Please enter at least 6 or more characters.";
+      });
+    } else {
+      passwordFormatCorrected = true;
+    }
+
+    if (emailFormatCorrected && passwordFormatCorrected) {
+      String res = await AuthMethods().loginUser(
+          email: emailController.text, password: passwordController.text);
+      if (res == 'success') {
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+                builder: (context) => const NavBarScreen(selectedIndex: 0)
+            ),
+                (route) => false);
+
+        setState(() {
+          isLoading = false;
+        });
+      } else {
+        setState(() {
+          isLoading = false;
+        });
+        showSnackBar(context, res);
+      }
+    }
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override

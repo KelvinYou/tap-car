@@ -61,11 +61,11 @@ class TextFieldInput extends StatelessWidget {
               filled: true,
               fillColor: Color(0xFFD9D9D9),
               // labelText: hintText,
-              prefixIcon: iconData != Icons.import_contacts_sharp ? Align(
-                widthFactor: 1.0,
-                heightFactor: 1.0,
-                child: Icon(iconData),
-              )  : null,
+              // prefixIcon: iconData != Icons.import_contacts_sharp ? Align(
+              //   widthFactor: 1.0,
+              //   heightFactor: 1.0,
+              //   child: Icon(iconData),
+              // )  : null,
             ),
             obscureText: isPass,
             enabled: !isReadOnly,

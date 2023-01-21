@@ -30,7 +30,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     super.initState();
     getData();
-
+// logoutSubmit();
     // AuthMethods().signOut();
     // Navigator.of(context).pushReplacement(
     //     MaterialPageRoute(
