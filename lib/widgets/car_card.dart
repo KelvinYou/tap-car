@@ -96,7 +96,7 @@ class _CarCardState extends State<CarCard> {
                     ),
                   ),
                   Text(
-                    "RM ${widget.snap["pricePerDay"].toString()} / Day",
+                    "RM ${widget.snap["pricePerDay"].toStringAsFixed(2)} / Day",
                     style: TextStyle(
                       fontSize: 16,
                     ),

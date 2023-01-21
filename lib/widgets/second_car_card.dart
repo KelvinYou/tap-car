@@ -30,8 +30,18 @@ class _SecondCarCardState extends State<SecondCarCard> {
   Widget build(BuildContext context) {
 
     return Container(
+      padding: EdgeInsets.only(left: 20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
+        color: Color(0xFF252525),
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Theme.of(context).colorScheme.shadow,
+        //     offset: const Offset( 0.0, 1.0, ),
+        //     blurRadius: 10.0,
+        //     spreadRadius: 0.5,
+        //   ),
+        // ],
       ),
       child: InkWell(
         onTap: () => Navigator.of(context).push(
@@ -41,23 +51,46 @@ class _SecondCarCardState extends State<SecondCarCard> {
             ),
           ),
         ),
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              width: 240,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.snap["carName"],
+                    style: TextStyle(
+                      color: Color(0xFFF5F5F5),
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(height: 10,),
+                  Text(
+                    "RM ${widget.snap["pricePerDay"].toStringAsFixed(2)} / Day",
+                    style: TextStyle(
+                      color: Color(0xFFF5F5F5),
+                    ),
+                  ),
+
+                ],
+              ),
+            ),
+            Container(
+              height: 120,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
                   topRight: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
                 ),
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
                   topRight: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
                 ),
                 child: Image(
-                  width: 240,
+                  width: 120,
                   fit: BoxFit.fitHeight,
                   image: NetworkImage( widget.snap["photoUrl"]),
                   loadingBuilder: (BuildContext context, Widget child,
@@ -75,38 +108,10 @@ class _SecondCarCardState extends State<SecondCarCard> {
                 ),
               ),
             ),
-            Container(
-              width: 240,
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              decoration: BoxDecoration(
-                color: Color(0xFFF1F8FF),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(15),
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.snap["carName"],
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                  Text(
-                    "RM ${widget.snap["pricePerDay"].toString()} / Day",
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
 
-                ],
-              ),
-            ),
           ],
         ),
+
       ),
     );
   }
