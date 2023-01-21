@@ -158,9 +158,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return isLoading
         ? const LoadingIndicator() : Scaffold(
-      appBar: PrimaryAppBar(
-          title: ""
-      ),
+      // appBar: PrimaryAppBar(
+      //     title: ""
+      // ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -172,6 +172,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                height: 60,
+              ),
               Container(
                 // height: 100,
                 width: double.infinity,

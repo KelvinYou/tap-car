@@ -115,6 +115,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                       ),
                     ),
 
+                    const SizedBox(height: 20,),
 
                     Row(
                       children: [
@@ -138,15 +139,17 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
 
                       ],
                     ),
+
+                    const SizedBox(height: 20,),
                     subtitleText("Model"),
                     contentText(widget.snap["model"]),
-
+                    const SizedBox(height: 20,),
                     subtitleText("Seats"),
                     contentText(widget.snap["seat"].toString()),
-
+                    const SizedBox(height: 20,),
                     subtitleText("Transmission"),
                     contentText(widget.snap["transmission"]),
-
+                    const SizedBox(height: 20,),
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -160,16 +163,16 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                             child: Row(
                               children: [
                                 Text(
-                                  "RM ${widget.snap["pricePerDay"]} ",
+                                  "RM ${widget.snap["pricePerDay"].toStringAsFixed(2)} ",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w500,
-                                    fontSize: 20,
+                                    fontSize: 16,
                                   ),
                                 ),
                                 Text(
                                   "/ Day",
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 16,
                                   ),
                                 ),
                               ],
@@ -186,7 +189,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                               "Rent Now",
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
-                                fontSize: 20,
+                                fontSize: 16,
                               ),
                             ),
                           )
