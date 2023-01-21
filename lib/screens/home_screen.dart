@@ -57,9 +57,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return isLoading
         ? const LoadingIndicator() : Scaffold(
-      appBar: PrimaryAppBar(
-          title: "TapCar"
-      ),
+      // appBar: PrimaryAppBar(
+      //     title: "TapCar"
+      // ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -74,6 +74,11 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(height: 50,),
+                Image.asset(
+                  "assets/logo.png",
+                  height: 36,
+                ),
                 const SizedBox(height: 20,),
 
                 titleText("Choose your car"),
