@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tap_car/screens/forgot_password_screen.dart';
 import 'package:tap_car/screens/nav_bar_screen.dart';
 import 'package:tap_car/screens/register_screen.dart';
 
@@ -140,6 +141,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   textInputType: TextInputType.text,
                   iconData: Icons.lock_open_sharp,
                   errorMsg: passwordErrorMsg,),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const ForgotPasswordScreen(),
+                        ),
+                      ),
+                      child: Text("Forgot Password?"),
+                    ),
+
+                  ],
+                ),
 
                 const SizedBox(height: 30,),
 
