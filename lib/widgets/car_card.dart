@@ -58,6 +58,7 @@ class _CarCardState extends State<CarCard> {
                 ),
                 child: Image(
                   width: 240,
+                  height: 190,
                   fit: BoxFit.fitHeight,
                   image: NetworkImage( widget.snap["photoUrl"]),
                   loadingBuilder: (BuildContext context, Widget child,

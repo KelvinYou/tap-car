@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tap_car/screens/rent_now_screen.dart';
 
 import 'package:tap_car/utils/app_theme.dart';
 import 'package:tap_car/widgets/image_full_screen.dart';
@@ -179,20 +180,28 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                             ),
                           ),
 
-                          Container(
-                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                            decoration: BoxDecoration(
-                              color: Color(0xFFFEBE3F),
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Text(
-                              "Rent Now",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (_) {
+                                return RentNowScreen(snap: widget.snap,);
+                              }));
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                              decoration: BoxDecoration(
+                                color: Color(0xFFFEBE3F),
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: Text(
+                                "Rent Now",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16,
+                                ),
                               ),
                             ),
-                          )
+                          ),
+
                         ],
                       ),
                     ),
