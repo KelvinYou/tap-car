@@ -11,7 +11,6 @@ import 'package:tap_car/widgets/loading_indicator.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-
 class NavBarScreen extends StatefulWidget {
   final int selectedIndex;
   const NavBarScreen({super.key, required this.selectedIndex});
@@ -31,7 +30,7 @@ class _NavBarScreenState extends State<NavBarScreen> {
   }
 
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   Future<FirebaseApp> _initializeFirebase() async {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
     return firebaseApp;
@@ -54,16 +53,15 @@ class _NavBarScreenState extends State<NavBarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: _initializeFirebase(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return Center(
-              child: _widgetOptions.elementAt(selectedIndex),
-            );
-          }
-          return const LoadingIndicator();
-        }
-      ),
+          future: _initializeFirebase(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return Center(
+                child: _widgetOptions.elementAt(selectedIndex),
+              );
+            }
+            return const LoadingIndicator();
+          }),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
@@ -81,7 +79,9 @@ class _NavBarScreenState extends State<NavBarScreen> {
             label: 'Order',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle_outline,),
+            icon: Icon(
+              Icons.add_circle_outline,
+            ),
             activeIcon: Icon(Icons.add_circle),
             label: 'Wallet',
           ),
@@ -98,5 +98,4 @@ class _NavBarScreenState extends State<NavBarScreen> {
       ),
     );
   }
-
 }

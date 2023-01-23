@@ -129,7 +129,8 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                       padding:
                           EdgeInsets.symmetric(horizontal: 35, vertical: 25),
                       decoration: BoxDecoration(
-                        color: Color(0xFFF1F8FF),
+                        color: Theme.of(context).colorScheme.secondaryContainer,
+                        // color: Color(0xFFF1F8FF),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30),

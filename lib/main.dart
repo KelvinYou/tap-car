@@ -23,8 +23,7 @@ Future main() async {
 
     runApp(
       ChangeNotifierProvider<ThemeModeNotifier>(
-        create: (_) =>
-            ThemeModeNotifier(ThemeMode.values[themeMode]),
+        create: (_) => ThemeModeNotifier(ThemeMode.values[themeMode]),
         child: MyApp(),
       ),
     );
@@ -41,7 +40,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: themeNotifier.getThemeMode(),
-      title: "Tour Guide App",
+      title: "",
       home: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
@@ -49,8 +48,9 @@ class MyApp extends StatelessWidget {
             // Checking if the snapshot has any data or not
             if (snapshot.hasData) {
               // if snapshot has data which means user is logged in then we check the width of screen and accordingly display the screen layout
-              return const NavBarScreen(selectedIndex: 0,);
-
+              return const NavBarScreen(
+                selectedIndex: 0,
+              );
             } else if (snapshot.hasError) {
               return Center(
                 child: Text('${snapshot.error}'),

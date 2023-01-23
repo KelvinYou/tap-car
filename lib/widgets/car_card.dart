@@ -28,7 +28,6 @@ class _CarCardState extends State<CarCard> {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
@@ -60,7 +59,7 @@ class _CarCardState extends State<CarCard> {
                   width: 240,
                   height: 190,
                   fit: BoxFit.fitHeight,
-                  image: NetworkImage( widget.snap["photoUrl"]),
+                  image: NetworkImage(widget.snap["photoUrl"]),
                   loadingBuilder: (BuildContext context, Widget child,
                       ImageChunkEvent? loadingProgress) {
                     if (loadingProgress == null) return child;
@@ -68,7 +67,7 @@ class _CarCardState extends State<CarCard> {
                       child: CircularProgressIndicator(
                         value: loadingProgress.expectedTotalBytes != null
                             ? loadingProgress.cumulativeBytesLoaded /
-                            loadingProgress.expectedTotalBytes!
+                                loadingProgress.expectedTotalBytes!
                             : null,
                       ),
                     );
@@ -94,15 +93,16 @@ class _CarCardState extends State<CarCard> {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
+                      color: Colors.black,
                     ),
                   ),
                   Text(
                     "RM ${widget.snap["pricePerDay"].toStringAsFixed(2)} / Day",
                     style: TextStyle(
                       fontSize: 16,
+                      color: Colors.black,
                     ),
                   ),
-
                 ],
               ),
             ),

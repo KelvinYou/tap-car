@@ -16,12 +16,10 @@ class AppTheme {
 
   static const Color backgroundDarkGrey = Color(0xFF383838);
 
-
   static const Color errorRed = Color(0xFFFF0000);
 
   static const Color dividerGrey = Color(0xFFD3D3D3);
   static const Color dividerDarkGrey = Color(0xFF656565);
-
 
   static const Color nearlyWhite = Color(0xFFFEFEFE);
 
@@ -43,7 +41,7 @@ class AppTheme {
       onPrimary: Colors.black,
       primaryContainer: backgroundLightGrey,
       onPrimaryContainer: Colors.black,
-      secondaryContainer: Color(0xFFE5E5E5),
+      secondaryContainer: Color(0xFFF1F8FF),
       // onSecondaryContainer: ,
       tertiaryContainer: Color(0xFFFEFEFE),
       // onTertiaryContainer: ,
@@ -119,5 +117,4 @@ class AppTheme {
       ),
     ),
   );
-
 }
