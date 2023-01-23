@@ -63,7 +63,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
           isLoading = false;
         });
         Navigator.of(context).pop();
-        showSnackBar(context, "Package removed successfully");
+        showSnackBar(context, "Car removed successfully");
       } else {
         setState(() {
           isLoading = false;
