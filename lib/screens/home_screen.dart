@@ -39,130 +39,127 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  List<String> documents = [ "he", "ha" ];
+  List<String> documents = ["he", "ha"];
 
   List<String> carBrands = [
     "assets/honda-logo.png",
     "assets/perodua-logo.png",
-    "assets/proton-logo.png"
+    "assets/proton-logo.png",
+    "assets/bmw-logo.png",
+    "assets/ford-logo.png",
+    "assets/rollsroyce-logo.png",
+    "assets/toyota-logo.png"
   ];
 
   List<DocumentSnapshot> carDocuments = [];
 
-
   CollectionReference carCollection =
-  FirebaseFirestore.instance.collection('cars');
+      FirebaseFirestore.instance.collection('cars');
 
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? const LoadingIndicator() : Scaffold(
-      // appBar: PrimaryAppBar(
-      //     title: "TapCar"
-      // ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.background,
-        ),
-        child: Container(
-          padding: EdgeInsets.only(left: 20),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 50,),
-                Image.asset(
-                  "assets/logo.png",
-                  height: 36,
-                ),
-                const SizedBox(height: 20,),
-
-                titleText("Choose your car"),
-
-                const SizedBox(height: 10,),
-
-                subtitleText("Car brand"),
-
-                const SizedBox(height: 10,),
-                SizedBox(
-                  height: 100,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: carBrands.length,
-                    itemBuilder: (BuildContext context, int index) =>
-                    Padding(
-                      padding: EdgeInsets.only(right: 25),
-                      child: Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFF1F8FF),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Image(
-                          width: 50,
-                          height: 50,
-                          image: AssetImage(carBrands[index]),
-                        ),
+        ? const LoadingIndicator()
+        : Scaffold(
+            // appBar: PrimaryAppBar(
+            //     title: "TapCar"
+            // ),
+            body: Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.background,
+              ),
+              child: Container(
+                padding: EdgeInsets.only(left: 20),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 50,
                       ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10,),
-
-                subtitleText("Most rented"),
-
-                const SizedBox(height: 10,),
-
-                SizedBox(
-                  height: 400,
-                  child: StreamBuilder(
-                    stream: carCollection
-                      .orderBy('createdDate', descending: false)
-                      .snapshots(),
-                    builder: (context, streamSnapshot) {
-                      if (streamSnapshot.hasData) {
-                        carDocuments = streamSnapshot.data!.docs;
-                        // carDocuments = documents.where((element) {
-                        //   return element
-                        //       .get('status')
-                        //       .contains(status);
-                        // }).toList();
-
-                        // documents = documents.where((element) {
-                        //   return element
-                        //       .get('tourGuideId')
-                        //       .contains(FirebaseAuth.instance.currentUser!.uid);
-                        // }).toList();
-                      }
-                      return ListView.builder(
-                        itemCount: carDocuments.length,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (ctx, index) =>
-                            Container(
-                              padding: EdgeInsets.only(right: 25),
-                              child: CarCard(
-                                snap: carDocuments[index].data(),
+                      Image.asset(
+                        "assets/logo.png",
+                        height: 36,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      titleText("Choose your car"),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      subtitleText("Car Brands"),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      SizedBox(
+                        height: 100,
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: carBrands.length,
+                          itemBuilder: (BuildContext context, int index) =>
+                              Padding(
+                            padding: EdgeInsets.only(right: 25),
+                            child: Container(
+                              width: 100,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFF1F8FF),
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: Image(
+                                width: 50,
+                                height: 50,
+                                image: AssetImage(carBrands[index]),
                               ),
                             ),
-                      );
-                    },
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      subtitleText("Cars Available to Rent"),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      SizedBox(
+                        height: 400,
+                        child: StreamBuilder(
+                          stream: carCollection
+                              .orderBy('createdDate', descending: false)
+                              .snapshots(),
+                          builder: (context, streamSnapshot) {
+                            if (streamSnapshot.hasData) {
+                              carDocuments = streamSnapshot.data!.docs;
+                            }
+                            return ListView.builder(
+                              itemCount: carDocuments.length,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (ctx, index) => Container(
+                                padding: EdgeInsets.only(right: 25),
+                                child: CarCard(
+                                  snap: carDocuments[index].data(),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                    ],
                   ),
                 ),
-
-                const SizedBox(height: 20,),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
-    );
+          );
   }
-
 }

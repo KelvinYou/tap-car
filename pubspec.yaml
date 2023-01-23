@@ -75,6 +75,10 @@ flutter:
     - assets/honda-logo.png
     - assets/perodua-logo.png
     - assets/proton-logo.png
+    - assets/ford-logo.png
+    - assets/rollsroyce-logo.png
+    - assets/toyota-logo.png 
+    - assets/bmw-logo.png               
     - assets/default-profile-pic.jpeg
     - assets/forgot-password-pic.png
   #   - images/a_dot_ham.jpeg

@@ -15,9 +15,9 @@ class ThemeChoiceState extends State<ThemeChoice> {
   late ThemeMode _selectedThemeMode;
 
   List _options = [
-    { "title": 'System', "value": ThemeMode.system },
-    { "title": 'Light', "value": ThemeMode.light },
-    { "title": 'Dark', "value": ThemeMode.dark }
+    {"title": 'System', "value": ThemeMode.system},
+    {"title": 'Light', "value": ThemeMode.light},
+    {"title": 'Dark', "value": ThemeMode.dark}
   ];
 
   @override
@@ -44,7 +44,8 @@ class ThemeChoiceState extends State<ThemeChoice> {
     return widgets;
   }
 
-  void _setSelectedThemeMode(ThemeMode mode, ThemeModeNotifier themeModeNotifier) async {
+  void _setSelectedThemeMode(
+      ThemeMode mode, ThemeModeNotifier themeModeNotifier) async {
     themeModeNotifier.setThemeMode(mode);
     var prefs = await SharedPreferences.getInstance();
     prefs.setInt('themeMode', mode.index);
@@ -63,28 +64,13 @@ class ThemeChoiceState extends State<ThemeChoice> {
     // build the Widget
     return Container(
       height: double.infinity,
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.background
-      ),
+      decoration:
+          BoxDecoration(color: Theme.of(context).colorScheme.background),
       child: Column(
         children: <Widget>[
           Column(
             children: _createOptions(themeModeNotifier),
           ),
-          // Expanded(
-          //   child: Column(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     children: [
-          //       Text(
-          //         'Current ThemeMode:',
-          //       ),
-          //       Text(
-          //         '$_selectedThemeMode',
-          //         style: Theme.of(context).textTheme.headline4,
-          //       ),
-          //     ],
-          //   ),
-          // ),
           SizedBox(
             height: 100,
           ),

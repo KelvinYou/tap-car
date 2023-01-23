@@ -4,15 +4,15 @@ class AppTheme {
   AppTheme._();
 
   // Light Theme
-  static const Color primary = Color(0xFF0083CD); // green
-  static const Color secondary = Color(0xFF96D9FF);
+  static const Color primary = Color(0xFFFEBE3F); // green
+  static const Color secondary = Color.fromARGB(255, 252, 219, 154);
 
   static const Color backgroundLightGrey = Color(0xFFE5E5E5);
   static const Color backgroundNearlyWhite = Color(0xFFFEFEFE);
 
   // Dark Theme
-  static const Color darkPrimary = Color(0xFF004F79);
-  static const Color darkSecondary = Color(0xFF587F91);
+  static const Color darkPrimary = Color(0xFFFEBE3F);
+  static const Color darkSecondary = Color.fromARGB(255, 252, 219, 154);
 
   static const Color backgroundDarkGrey = Color(0xFF383838);
 
@@ -77,7 +77,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    primarySwatch: Colors.blue,
+    primarySwatch: Colors.yellow,
     accentColor: primary,
     fontFamily: 'Schyler',
     colorScheme: const ColorScheme(

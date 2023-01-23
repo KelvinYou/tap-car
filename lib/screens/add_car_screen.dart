@@ -97,90 +97,107 @@ class _AddCarScreenState extends State<AddCarScreen> {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? const LoadingIndicator() : Scaffold(
-      appBar: PrimaryAppBar(
-          title: "Add New Car"
-      ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.background,
-        ),
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 30),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 30,),
-                TextFieldInput(
-                    textEditingController: carNameController,
-                    hintText: "Car Name",
-                    textInputType: TextInputType.text,
+        ? const LoadingIndicator()
+        : Scaffold(
+            appBar: PrimaryAppBar(title: "Add New Car"),
+            body: Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.background,
+              ),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      TextFieldInput(
+                        textEditingController: carNameController,
+                        hintText: "Car Name",
+                        textInputType: TextInputType.text,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TextFieldInput(
+                        textEditingController: yearController,
+                        hintText: "Year",
+                        textInputType: TextInputType.text,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TextFieldInput(
+                        textEditingController: brandController,
+                        hintText: "Brand",
+                        textInputType: TextInputType.text,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TextFieldInput(
+                        textEditingController: modelController,
+                        hintText: "Model",
+                        textInputType: TextInputType.text,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TextFieldInput(
+                        textEditingController: priceController,
+                        hintText: "Price Per Day (RM)",
+                        textInputType: TextInputType.text,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TextFieldInput(
+                        textEditingController: seatController,
+                        hintText: "No. of Seat",
+                        textInputType: TextInputType.text,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TextFieldInput(
+                        textEditingController: transmissionController,
+                        hintText: "Transmission",
+                        textInputType: TextInputType.text,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "Photo",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      GestureDetector(
+                        onTap: selectImage,
+                        child: Icon(
+                          Icons.add_box_outlined,
+                          size: 55.0,
+                        ),
+                      ),
+                      image != null ? Image.memory(image!) : SizedBox(),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      PrimaryButton(
+                          onPressed: addCarSubmit, childText: "Confirm"),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                    ],
+                  ),
                 ),
-                const SizedBox(height: 20,),
-                TextFieldInput(
-                  textEditingController: yearController,
-                  hintText: "Year",
-                  textInputType: TextInputType.text,
-                ),
-                const SizedBox(height: 20,),
-                TextFieldInput(
-                  textEditingController: brandController,
-                  hintText: "Brand",
-                  textInputType: TextInputType.text,
-                ),
-                const SizedBox(height: 20,),
-                TextFieldInput(
-                  textEditingController: modelController,
-                  hintText: "Model",
-                  textInputType: TextInputType.text,
-                ),
-                const SizedBox(height: 20,),
-                TextFieldInput(
-                  textEditingController: priceController,
-                  hintText: "Price Per Day (RM)",
-                  textInputType: TextInputType.text,
-                ),
-                const SizedBox(height: 20,),
-                TextFieldInput(
-                  textEditingController: seatController,
-                  hintText: "No. of Seat",
-                  textInputType: TextInputType.text,
-                ),
-                const SizedBox(height: 20,),
-                TextFieldInput(
-                  textEditingController: transmissionController,
-                  hintText: "Transmission",
-                  textInputType: TextInputType.text,
-                ),
-                const SizedBox(height: 20,),
-                Text("photo"),
-
-                GestureDetector(
-                  onTap: selectImage,
-                  child: Icon(Icons.add_box_outlined),
-                ),
-
-                image != null? Image.memory(
-                  image!
-                ) : SizedBox(),
-
-
-                const SizedBox(height: 20,),
-                PrimaryButton(
-                    onPressed: addCarSubmit,
-                    childText: "Confirm"
-                ),
-                const SizedBox(height: 40,),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
-    );
+          );
   }
   // final String carId;
   // final String ownerId;

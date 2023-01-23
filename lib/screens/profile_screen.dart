@@ -70,15 +70,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: [
         Container(
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-          ),
+          decoration: BoxDecoration(),
           padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
-                  Icon(icon, color: color,),
+                  Icon(
+                    icon,
+                    color: color,
+                  ),
                   const SizedBox(width: 10.0),
                   Text(
                     title,
@@ -90,7 +92,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ],
               ),
-
               Icon(Icons.chevron_right),
             ],
           ),
@@ -102,10 +103,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void logoutSubmit() async {
     await AuthMethods().signOut();
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) =>
-          const LoginScreen(),
-        ),
+      MaterialPageRoute(
+        builder: (context) => const LoginScreen(),
+      ),
     );
   }
 
@@ -141,10 +141,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       margin: EdgeInsets.symmetric(horizontal: 20),
       width: double.infinity,
       decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(width: 0.5, color: Colors.black),
-        )
-      ),
+          border: Border(
+        bottom: BorderSide(width: 0.5, color: Colors.black),
+      )),
       child: Text(
         content,
         style: TextStyle(
@@ -157,127 +156,146 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? const LoadingIndicator() : Scaffold(
-      // appBar: PrimaryAppBar(
-      //     title: ""
-      // ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.background,
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                height: 60,
+        ? const LoadingIndicator()
+        : Scaffold(
+            // appBar: PrimaryAppBar(
+            //     title: ""
+            // ),
+            body: Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.background,
               ),
-              Container(
-                // height: 100,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
+              child: SingleChildScrollView(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      height: 60,
+                    ),
+                    Container(
+                      // height: 100,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      child: Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const ChangeProfileScreen(),
+                              ),
+                            ),
+                            child: userData["photoUrl"] == ""
+                                ? CircleAvatar(
+                                    radius: 44.0,
+                                    backgroundImage: AssetImage(
+                                        'assets/default-profile-pic.jpeg'),
+                                    backgroundColor: Colors.grey,
+                                  )
+                                : CircleAvatar(
+                                    radius: 44.0,
+                                    backgroundImage:
+                                        NetworkImage(userData["photoUrl"]),
+                                    backgroundColor: Colors.grey,
+                                  ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            userData["username"],
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    titleText("Profile Details"),
+                    subtitleText("Date of Birth"),
+                    contentText("2 Jan 2000"),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    subtitleText("Email"),
+                    contentText(userData["email"]),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    subtitleText("Mobile Number"),
+                    contentText("+(60) 12-3456 789"),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    subtitleText("Address"),
+                    contentText("No.1, Jalan Tengah 2"),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    subtitleText("Password"),
+                    contentText("******"),
+                    const SizedBox(
+                      height: 30,
+                    ),
                     GestureDetector(
                       onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const ChangeProfileScreen(),
+                          builder: (context) => const ThemeModeScreen(),
                         ),
                       ),
-                      child: userData["photoUrl"] == "" ? CircleAvatar(
-                        radius: 44.0,
-                        backgroundImage: AssetImage('assets/default-profile-pic.jpeg'),
-                        backgroundColor: Colors.grey,
-                      ) : CircleAvatar(
-                        radius: 44.0,
-                        backgroundImage: NetworkImage(userData["photoUrl"]),
-                        backgroundColor: Colors.grey,
-                      ),
+                      child: selectionView(
+                          Icons.dark_mode_outlined,
+                          "Light / Dark Mode",
+                          Theme.of(context).colorScheme.onPrimary),
                     ),
-                    const SizedBox(height: 10,),
-                    Text(
-                      userData["username"],
-                      style: TextStyle(
-                        fontSize: 16,
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const TncScreen(),
+                        ),
                       ),
+                      child: selectionView(
+                          Icons.policy_outlined,
+                          "Terms & Conditions",
+                          Theme.of(context).colorScheme.onPrimary),
                     ),
-                    const SizedBox(height: 30,),
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const MoreScreen(),
+                        ),
+                      ),
+                      child: selectionView(Icons.more_outlined, "More",
+                          Theme.of(context).colorScheme.onPrimary),
+                    ),
+                    GestureDetector(
+                      onTap: () async {
+                        final action = await Dialogs.yesAbortDialog(
+                            context, 'Confirm to logout?', '', 'Logout');
+                        if (action == DialogAction.yes) {
+                          logoutSubmit();
+                        }
+                      },
+                      child: selectionView(Icons.logout, "Logout", Colors.red),
+                    ),
                   ],
                 ),
               ),
-              const SizedBox(height: 20,),
-              titleText("Profile Details"),
-              subtitleText("Date of Birth"),
-              contentText("2 Jan 2000"),
-              const SizedBox(height: 15,),
-              subtitleText("Email"),
-              contentText("kayli@gmail.com"),
-              const SizedBox(height: 15,),
-              subtitleText("Mobile Number"),
-              contentText("+(60) 12-3456 789"),
-              const SizedBox(height: 15,),
-              subtitleText("Address"),
-              contentText("No.1, Jalan Tanjung Rambutan"),
-              const SizedBox(height: 15,),
-              subtitleText("Password"),
-              contentText("******"),
-
-              const SizedBox(height: 30,),
-
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) =>
-                    const ThemeModeScreen(),
-                  ),
-                ),
-                child: selectionView(Icons.dark_mode_outlined, "Light / Dark Mode", Theme.of(context).colorScheme.onPrimary),
-              ),
-
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) =>
-                    const TncScreen(),
-                  ),
-                ),
-                child: selectionView(Icons.policy_outlined, "Terms & Conditions", Theme.of(context).colorScheme.onPrimary),
-              ),
-
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) =>
-                    const MoreScreen(),
-                  ),
-                ),
-                child: selectionView(Icons.more_outlined, "More", Theme.of(context).colorScheme.onPrimary),
-              ),
-
-              GestureDetector(
-                onTap: () async {
-                  final action = await Dialogs.yesAbortDialog(
-                      context, 'Confirm to logout?', '',
-                      'Logout');
-                  if (action == DialogAction.yes) {
-                    logoutSubmit();
-                  }
-                },
-                child: selectionView(Icons.logout, "Logout", Colors.red),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+            ),
+          );
   }
-
 }
