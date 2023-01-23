@@ -216,12 +216,14 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                                               style: TextStyle(
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 16,
+                                                color: Colors.black,
                                               ),
                                             ),
                                             Text(
                                               "/ Day",
                                               style: TextStyle(
                                                 fontSize: 16,
+                                                color: Colors.black,
                                               ),
                                             ),
                                           ],
@@ -249,6 +251,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               fontSize: 16,
+                                              color: Colors.black,
                                             ),
                                           ),
                                         ),

@@ -115,7 +115,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Text(
         content,
         style: TextStyle(
-          color: Color(0xFFF2AA4C),
+          color: Theme.of(context).colorScheme.onBackground,
           fontWeight: FontWeight.bold,
           fontSize: 20,
         ),

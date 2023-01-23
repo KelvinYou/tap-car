@@ -32,7 +32,6 @@ class TextFieldInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,9 +41,11 @@ class TextFieldInput extends StatelessWidget {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,
+              color: Theme.of(context).colorScheme.onBackground,
             ),
           ),
           TextField(
+            style: TextStyle(color: Colors.black),
             inputFormatters: textInputFormatter,
             controller: textEditingController,
             maxLines: maxLines,
@@ -52,7 +53,6 @@ class TextFieldInput extends StatelessWidget {
             onChanged: onChanged,
             textInputAction: TextInputAction.done,
             keyboardType: textInputType,
-
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15.0),
@@ -97,12 +97,14 @@ class TextFieldInput extends StatelessWidget {
           //   enabled: !isReadOnly,
           // ),
 
-          errorMsg == "" ? const SizedBox() : Text(
-            errorMsg,
-            style: const TextStyle(
-              color: AppTheme.errorRed,
-            ),
-          ),
+          errorMsg == ""
+              ? const SizedBox()
+              : Text(
+                  errorMsg,
+                  style: const TextStyle(
+                    color: AppTheme.errorRed,
+                  ),
+                ),
         ],
       ),
     );

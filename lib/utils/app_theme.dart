@@ -53,7 +53,7 @@ class AppTheme {
       error: Colors.black,
       onError: Colors.white,
       background: Colors.white,
-      onBackground: Colors.red,
+      onBackground: Colors.black,
       surface: Colors.pink,
       onSurface: Colors.black12,
     ),
@@ -82,7 +82,7 @@ class AppTheme {
     fontFamily: 'Schyler',
     colorScheme: const ColorScheme(
       brightness: Brightness.dark,
-      primary: primary,
+      primary: Color.fromARGB(255, 193, 176, 25),
       onPrimary: Colors.white,
       primaryContainer: backgroundDarkGrey,
       onPrimaryContainer: Colors.black,

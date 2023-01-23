@@ -13,10 +13,9 @@ class PrimaryAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return AppBar(
       iconTheme: IconThemeData(
-          color: Theme.of(context).colorScheme.onPrimary,
+        color: Theme.of(context).colorScheme.onPrimary,
       ),
       // centerTitle: true,
       backgroundColor: Theme.of(context).colorScheme.primary,
@@ -32,18 +31,18 @@ class PrimaryAppBar extends StatelessWidget with PreferredSizeWidget {
       ),
       elevation: 0,
       actions: <Widget>[
-        rightButton != null && function != null ?
-        Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: GestureDetector(
-              onTap: function,
-              child: Icon( rightButton ),
-            )
-        ) : const SizedBox(),
+        rightButton != null && function != null
+            ? Padding(
+                padding: const EdgeInsets.only(right: 20.0),
+                child: GestureDetector(
+                  onTap: function,
+                  child: Icon(rightButton),
+                ))
+            : const SizedBox(),
       ],
     );
-
   }
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
