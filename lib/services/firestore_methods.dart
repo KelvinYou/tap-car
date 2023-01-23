@@ -42,4 +42,15 @@ class FireStoreMethods {
     }
     return res;
   }
+
+  Future<String> deleteCar(String carId) async {
+    String res = "Some error occurred";
+    try {
+      _firestore.collection('tourPackages').doc(carId).delete();
+      res = 'success';
+    } catch (err) {
+      res = err.toString();
+    }
+    return res;
+  }
 }

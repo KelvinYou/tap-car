@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tap_car/screens/rent_now_screen.dart';
+import 'package:tap_car/services/firestore_methods.dart';
 
 import 'package:tap_car/utils/app_theme.dart';
+import 'package:tap_car/utils/utils.dart';
+import 'package:tap_car/widgets/dialogs.dart';
 import 'package:tap_car/widgets/image_full_screen.dart';
 import 'package:tap_car/widgets/loading_indicator.dart';
 import 'package:tap_car/widgets/primary_app_bar.dart';
 // import 'package:tap_car/widget/app_bar/secondary_app_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:tap_car/widgets/primary_button.dart';
 
 class CarDetailScreen extends StatefulWidget {
   final snap;
@@ -42,6 +47,35 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
       ),
     );
   }
+
+  deleteSubmit() async {
+
+    final action = await Dialogs.yesAbortDialog(
+        context, 'Confirm to delete?',
+        'Once confirmed, it cannot be modified anymore',
+        'Delete');
+
+    if (action == DialogAction.yes) {
+      String res = await FireStoreMethods().deleteCar(widget.snap["carId"]);
+
+      if (res == "success") {
+        setState(() {
+          isLoading = false;
+        });
+        Navigator.of(context).pop();
+        showSnackBar(context, "Package removed successfully");
+      } else {
+        setState(() {
+          isLoading = false;
+        });
+        showSnackBar(context, res);
+      }
+    }
+
+
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -151,6 +185,15 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                     subtitleText("Transmission"),
                     contentText(widget.snap["transmission"]),
                     const SizedBox(height: 20,),
+
+                    FirebaseAuth.instance.currentUser!.uid == widget.snap["ownerId"] ?
+                    Container(
+                      child: PrimaryButton(
+                        onPressed: deleteSubmit,
+                        childText: "Delete",
+                      ),
+                    )
+                    :
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
