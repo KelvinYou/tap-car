@@ -207,7 +207,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                                     children: [
                                       Container(
                                         padding: EdgeInsets.symmetric(
-                                          horizontal: 30,
+                                          horizontal: 20,
                                         ),
                                         child: Row(
                                           children: [
@@ -240,7 +240,7 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                                         },
                                         child: Container(
                                           padding: EdgeInsets.symmetric(
-                                              horizontal: 20, vertical: 15),
+                                              horizontal: 15, vertical: 15),
                                           decoration: BoxDecoration(
                                             color: Color(0xFFFEBE3F),
                                             borderRadius:

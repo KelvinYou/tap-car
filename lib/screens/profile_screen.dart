@@ -226,8 +226,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: 20,
                     ),
                     titleText("Profile Details"),
-                    subtitleText("Date of Birth"),
-                    contentText("2 Jan 2000"),
                     const SizedBox(
                       height: 15,
                     ),
@@ -238,11 +236,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     subtitleText("Mobile Number"),
                     contentText("+(60) 12-3456 789"),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    subtitleText("Address"),
-                    contentText("No.1, Jalan Tengah 2"),
                     const SizedBox(
                       height: 15,
                     ),
